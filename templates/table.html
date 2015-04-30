@@ -5,10 +5,12 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/table.css') }}">
 
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
      <script src="https://code.createjs.com/easeljs-0.8.0.min.js"></script>
   </head>
-  <body>
-    <canvas id="pokertable" width="500" height="400">
+  <body onload="init();">
+    <canvas id="pokertable" >
+      <>
     </canvas>
      <script type="text/javascript" src="{{ url_for('static', filename='js/table.js') }}"></script>
   </body>
