@@ -1,5 +1,12 @@
 
 #pokertable{
+    display: block;
     margin: 0 auto;
-    background-color:#2A1B0A;
+    position:relative;
+    top: 30px;
+    text-align:center;
+    border-color:black;
+    border-width:5px;
+    border-radius:40px;
+    background-color:#3D5C00;
 }
