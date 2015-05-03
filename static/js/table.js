@@ -17,11 +17,11 @@ function init(){
     cardsPos[2] = [canvas.width/2-cardwidth,canvas.height-cardheight-2];
     cardsPos[3] = [canvas.width/2,canvas.height-cardheight-2];
     //hole cards of player
-    cardsPos[4] = [canvas.width/2-3*cardwidth,canvas.height/2-cardheight/2]
-    cardsPos[5] = [canvas.width/2-2*cardwidth,canvas.height/2-cardheight/2]
-    cardsPos[6] = [canvas.width/2-1*cardwidth,canvas.height/2-cardheight/2]
-    cardsPos[7] = [canvas.width/2+0.5*cardwidth,canvas.height/2-cardheight/2]
-    cardsPos[8] = [canvas.width/2+2*cardwidth,canvas.height/2-cardheight/2]
+    cardsPos[4] = [canvas.width/2-3*cardwidth,canvas.height/2-cardheight/2];
+    cardsPos[5] = [canvas.width/2-2*cardwidth,canvas.height/2-cardheight/2];
+    cardsPos[6] = [canvas.width/2-1*cardwidth,canvas.height/2-cardheight/2];
+    cardsPos[7] = [canvas.width/2+0.5*cardwidth,canvas.height/2-cardheight/2];
+    cardsPos[8] = [canvas.width/2+2*cardwidth,canvas.height/2-cardheight/2];
 
 
     var graphics;
@@ -58,5 +58,5 @@ function init(){
     var deckimg = document.getElementById('deck');
     console.log(deckimg);
     var ctx = canvas.getContext('2d');
-    ctx.drawImage(deckimg, 374, 374, 1622-374, 2116-374, 0,cardsPos[4][1], 100,140);
+    ctx.drawImage(deckimg, 374, 374, 1622-374, 2116-374, 0,cardsPos[4][1], 64,89);
 }

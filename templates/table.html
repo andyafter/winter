@@ -1,19 +1,27 @@
 
 <html>
   <head>
+    {%block head%}
+
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/table.css') }}">
 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
      <script src="https://code.createjs.com/easeljs-0.8.0.min.js"></script>
+     {%endblock%}
   </head>
   <body onload="init();">
+    {%block body%}
+
     <canvas id="pokertable" >
       <img id="deck" src="/static/img/Blue_Back.jpg">
     </canvas>
     
-     <script type="text/javascript" src="{{ url_for('static', filename='js/table.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/table.js') }}"></script>
+
+     {%endblock%}
   </body>
 </html>
 
