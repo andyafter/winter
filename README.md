@@ -12,6 +12,7 @@ switch into a directory that you like and:
 Switch back to winter directory and:
 
 - pip install flask
+- pip install -r requirements.txt
 - python winter.py
 
 Go to your browser and go to:
