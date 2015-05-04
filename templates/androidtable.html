@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
      {%endblock%}
   </head>
-  <body onload="androidinit();">
+  <body onload="init();">
     {%block body%}
 
       <canvas id="pokertable" >
       </canvas>
       
-      <script type="text/javascript" src="{{ url_for('static', filename='js/table.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/androidtable.js') }}"></script>
 
 
 

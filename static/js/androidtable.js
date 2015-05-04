@@ -1,6 +1,5 @@
 function init(){
     var canvas = document.getElementById('pokertable');
-    var cards = ["static/img/cards.eps"];
     var swidth = screen.width;
     var sheight = screen.height;
     var cardwidth ;
@@ -12,10 +11,10 @@ function init(){
     var graphics;
     var shape;
 
-    test();
+
     //if (window.matchMedia("(min-width: 2000px)").matches){
-    canvas.width = swidth*0.6; //// 
-    canvas.height = sheight*0.5;
+    canvas.width = swidth ; //// 
+    canvas.height = sheight;
 
 
     cardwidth = 64;
@@ -59,5 +58,5 @@ function init(){
     //console.log(deckimg);
     var ctx = canvas.getContext('2d');
     //ctx.drawImage(deckimg, 374, 374, 1622-374, 2116-374, 0,cardsPos[4][1], 64,89);
-}
 
+}
