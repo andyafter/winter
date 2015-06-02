@@ -52,11 +52,12 @@ function init(){
     /// in the card back picture
     /// width 374 ~ 1622
     /// height 374 ~ 2116
-
+    // the cards.jpg
+    // size: 16153, 6958
     
 
     var deckimg = document.getElementById('deck');
     console.log(deckimg);
     var ctx = canvas.getContext('2d');
-    ctx.drawImage(deckimg, 374, 374, 1622-374, 2116-374, 0,cardsPos[4][1], 100,140);
+    ctx.drawImage(deckimg, 374, 374, 1622-374, 2116-374, 0,cardsPos[4][1], 64,89);
 }
