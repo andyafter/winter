@@ -13,8 +13,8 @@ function init(){
 
 
     //if (window.matchMedia("(min-width: 2000px)").matches){
-    canvas.width = swidth ; //// 
-    canvas.height = sheight;
+    canvas.width = swidth*0.8; //// 
+    canvas.height = sheight*0.7;
 
 
     cardwidth = 64;

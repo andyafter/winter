@@ -21,6 +21,7 @@ def new():
 def pstr(s):
     return s
 
+
 @app.route("/table")
 def pokerTable():
     if "Android" in request.headers.get('User-Agent'):
