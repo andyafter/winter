@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template, request
 from flask_bootstrap import *
-
+from test import *
 def create_app():
     app = Flask(__name__)
     Bootstrap(app)
@@ -23,10 +23,11 @@ def pstr(s):
 
 @app.route("/table")
 def pokerTable():
-    if "Android" in request.headers.get('User-Agent'):
-        print "android"
-        return render_template("androidtable.html")
     return render_template('table.html')
+@app.route("/test")
+def test():
+    a = testFunc()
+    return a
 
 if __name__ == "__main__":
     app.debug = True
