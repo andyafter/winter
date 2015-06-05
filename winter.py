@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template, request
 from flask_bootstrap import *
-from test import *
+from swan.test import *
 def create_app():
     app = Flask(__name__)
     Bootstrap(app)
@@ -26,8 +26,8 @@ def pokerTable():
     return render_template('table.html')
 @app.route("/test")
 def test():
-    a = testFunc()
-    return a
+    here()
+    return "succcedd"
 
 if __name__ == "__main__":
     app.debug = True

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Poker</title>
+    <link rel="shortcut icon" href="http://www.jeskola.net/poker/favicon.png?v=2" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
+    <link href="http://fonts.googleapis.com/css?family=Luckiest+Guy" rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet" type='text/css'>
+    <script type="text/javascript" src="{{  url_for('static', filename='js/bowser.min.js')}}"></script>
+    <script type="text/javascript" src="{{  url_for('static', filename='js/snap.svg-min.js')}}"></script>
+    <script type="text/javascript" src="{{  url_for('static', filename='js/sound.js')}}"></script>
+    <script type="text/javascript" src="{{  url_for('static', filename='js/app.js')}}"></script>
+    <script type="text/javascript" src="{{  url_for('static', filename='js/client.js')}}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+    <svg id="canvas">
+        <filter id="lightMe1">
+            <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="white" >
+                <fePointLight x="640" y="400" z="400" />
+            </feDiffuseLighting>
+
+            <feComposite in="SourceGraphic" in2="light"
+                         operator="arithmetic" k1="1" k2="0" k3="0" k4="0" />
+        </filter>
+    </svg>
+</body>
+</html>

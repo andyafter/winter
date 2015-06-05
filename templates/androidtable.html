@@ -10,37 +10,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
      {%endblock%}
   </head>
-  <body onload="androidinit();">
+  <body onload="init();">
     {%block body%}
 
       <canvas id="pokertable" >
       </canvas>
       
-      <script type="text/javascript" src="{{ url_for('static', filename='js/table.js') }}"></script>
-
-
-
+      <script type="text/javascript" src="{{ url_for('static', filename='js/androidtable.js') }}"></script>
 
     <div class="container">
       <div class="jumbotron">
-	<h1>My First Bootstrap Page</h1>
-	<p>Resize this responsive page to see the effect!</p> 
+	<h1>Heads-Up Limit Holdem!</h1>
+	<p>This is a heads up game that you can never win. Theoretically proved. Give up and go home man.</p> 
       </div>
       <div class="row">
 	<div class="col-sm-4">
-	  <h3>Column 1</h3>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-	  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+	  <h3>Theory</h3>
+	  <p>Well if you want to know more you can to to the web site of:</p>
+	  <p>Computer Poker Research Group.</p>
 	</div>
 	<div class="col-sm-4">
-	  <h3>Column 2</h3>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-	  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+	  <h3>Practices</h3>
+	  <p>If you want to learn more about how this system is built and why it is cool, there is also source code in <a href="https://github.com/tansey/pycfr">here</a> and <a href="https://github.com/rggibson/open-pure-cfr">here</a>.</p>
+	  
 	</div>
 	<div class="col-sm-4">
-	  <h3>Column 3</h3>        
-	  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-	  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+	  <h3>Breakthrough</h3>        
+	  <p>This here is the AI called cepheus.</p>
+	  <p>Simple AI that you can never beat.</p>
 	</div>
       </div>
     </div>

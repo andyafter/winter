@@ -21,3 +21,24 @@ body{
     border-radius:3px;
 }
 
+
+img{
+    border-style:solid;
+    border-radius:50px;
+}
+
+
+#controls
+{
+  bottom: 35px;
+  left: 500px;
+  position: absolute;
+  width: 100%;
+}
+
+#start{
+    bottom:35px;
+    left:100px;
+    position:absolute;
+    width:100%;
+}
