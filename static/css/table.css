@@ -30,7 +30,7 @@ img{
 
 #controls
 {
-  bottom: 35px;
+  top: 570px;
   left: 500px;
   position: absolute;
   width: 100%;
@@ -41,4 +41,11 @@ img{
     left:100px;
     position:absolute;
     width:100%;
+}
+
+
+#yourbank{
+    font-color: white;
+    bottom:35px;
+    position:absolute;
 }

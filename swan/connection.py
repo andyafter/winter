@@ -19,7 +19,7 @@ RANK_TO_STRING = Card.RANK_TO_STRING
 players = 2
 deck = []
 ante = 1
-bet_his = []
+#bet_his = []
 blinds = [1,2] ## small blind and big blind is 1 and 2
 total_bank_roll = [200, 200] ## this is what the players have at the very beginning
 rounds = 4 # preflop, blabla, I am not gonna use what is inside the pycfr package cause it is too complicated
@@ -40,7 +40,7 @@ action = ['f', 'c', 'r']
 # write a function to generate url string according to the game status
 
 
-def genURL(r, boardString): ## r is the round number starts with 0, where 0 means preflop
+def genURL(r, boardString, bet_his): ## r is the round number starts with 0, where 0 means preflop
     # here the bet history is a list of length r+1
     # here board is a string and you know what to do
     ori = "http://poker.srv.ualberta.ca/query?queryString="
