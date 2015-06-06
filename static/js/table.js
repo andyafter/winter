@@ -10,7 +10,7 @@ var turn;   //// turn to store which turn is this. preflop, flop, turn, river
 var turnnum = 0; // 0,1,2,3
 var table = [];
 var blind = 1;
-var betseq = [""];
+var betseq = ["","","",""];
 var bank = [200,200]; // computer, player 
 
 var chips = [0,0];    // computer player
@@ -25,23 +25,26 @@ var t2n={ "preflop":0,
 	  "river":3
 };
 
+var winstatus;
+
 
 for(var n=0; n<52;n++){
     pokerDeck[n] = n; 
 }
 
 
-var win = ["r","r","r","r","r","r","r","r","c","c","c","f","f"];
-var lose = ["f","f","f","f","f","f","f","f","c","c","c","r","r"];
+var win = ["r","r","r","r","r","r","r","f","f"];
+var lose = ["f","f","f","f","f","f","f","r","r"];
 var thisround = [];
 
 
 var bet_seq = [];
 bet_seq["preflop continuing"] = ["cc", "crc", "crrc", "crrrc", "rc", "rrc", "rrrc"];
 bet_seq["preflop terminal"] = ["f", "rf", "rrf", "rrrf", "crf", "crrf", "crrrf"];
-bet_seq["flop turn continuing"] = ["cc", "crc", "crrc", "crrrc", "crrrrc", "rc", "rrc", "rrrc", "rrrrc"];
-bet_seq["flop turn terminal"] = ["rf", "rrf", "rrrf", "rrrrf", "crf", "crrf", "crrrf", "crrrrf"];
-bet_seq["river continuing"] = ["cc", "crc", "crrc", "crrrc", "crrrrc", "rc", "rrc", "rrrc", "rrrrc"];
+bet_seq["flop continuing"] = ["cc", "crc", "crrc", "crrrc", "crrrrc", "rc", "rrc", "rrrc", "rrrrc"];
+bet_seq["flop terminal"] = ["rf", "rrf", "rrrf", "rrrrf", "crf", "crrf", "crrrf", "crrrrf"];
+bet_seq["turn continuing"] = ["cc", "crc", "crrc", "crrrc", "crrrrc", "rc", "rrc", "rrrc", "rrrrc"];
+bet_seq["turn terminal"] = ["rf", "rrf", "rrrf", "rrrrf", "crf", "crrf", "crrrf", "crrrrf"];
 bet_seq["river terminal"] = ["cc", "rc", "rf", "rrc", "rrf", "rrrc", "rrrf", "rrrrc", "rrrrf", "crc", "crf", "crrc", "crrf", "crrrc", "crrrf", "crrrrc", "crrrrf"];
  
 var action = ['f', 'c', 'r'];
@@ -170,44 +173,123 @@ $('#startbutton').on('click', function (e){
 function fold(){
     chips[0]+=chipsThisRound[0];
     chips[1]+=chipsThisRound[1];
-    bank[0]+= chips[1];
-    bank[1]-= chips[1];
+    bank[0]+= chips[1]+chips[0];
     chipsThisRound = [0,0];
     chips = [0,0];
     thisround = [];
     initRound();
+    $('#aichips').text(0);
+    $('#yourchips').text(1);
 }
 
 function call(){ // or check
+    var ctx = canvas.getContext('2d');
+    var deckimg = document.getElementById('deck');
+    var cardsimg = document.getElementById('cards');
+    var chipsimg = document.getElementById('chips');
     bank[1]-=1;
     chipsThisRound[1]+=1;
     if(turn=="preflop"){
-	// blind = 0 consider
-	if(blind==0){
-	    computerAct();
-	}
-    }
-    else if(turn=="flop" || turn=="turn"){
+	// blind = 0 conside
+	temp = chipsThisRound[0]-chipsThisRound[1];
+	bank[1] -= temp;
+	chips[0]+=chipsThisRound[0];
+	chips[1]+=chipsThisRound[1]+temp;
+	chipsThisRound=[0,0];
+	ctx.drawImage(cardsimg, allcards[0]/13*(pokerDeck[4]%13), allcards[1]/4*(parseInt(pokerDeck[4]/13)),parseInt(allcards[0]/13),parseInt(allcards[1]/4), cardsPos[4][0],cardsPos[4][1], 64,89);
+	ctx.drawImage(cardsimg, allcards[0]/13*(pokerDeck[5]%13), allcards[1]/4*(parseInt(pokerDeck[5]/13)),parseInt(allcards[0]/13),parseInt(allcards[1]/4), cardsPos[5][0],cardsPos[5][1], 64,89);
+	ctx.drawImage(cardsimg, allcards[0]/13*(pokerDeck[6]%13), allcards[1]/4*(parseInt(pokerDeck[6]/13)),parseInt(allcards[0]/13),parseInt(allcards[1]/4), cardsPos[6][0],cardsPos[6][1], 64,89);
+	turn = "flop";
 	
     }
+    else if(turn=="flop" || turn=="turn"){
+	temp = chipsThisRound[0]-chipsThisRound[1];
+	bank[1] -= temp;
+	chips[0]+=chipsThisRound[0];
+	chips[1]+=chipsThisRound[1]+temp;
+	chipsThisRound=[0,0];
+	ctx.drawImage(cardsimg, allcards[0]/13*(pokerDeck[7]%13), allcards[1]/4*(parseInt(pokerDeck[7]/13)),parseInt(allcards[0]/13),parseInt(allcards[1]/4), cardsPos[7][0],cardsPos[7][1], 64,89);
+	if(turn=="flop"){
+	    turn= "turn";
+	}
+	else{
+	    turn="river";
+	}
+    }
     else{
+	temp = chipsThisRound[0]-chipsThisRound[1];
+	bank[1] -= temp;
+	chips[0]+=chipsThisRound[0];
+	chips[1]+=chipsThisRound[1]+temp;
+	chipsThisRound=[0,0];
+	ctx.drawImage(cardsimg, allcards[0]/13*(pokerDeck[0]%13), allcards[1]/4*(parseInt(pokerDeck[0]/13)),parseInt(allcards[0]/13),parseInt(allcards[1]/4), cardsPos[0][0],cardsPos[0][1], 64,89);
+	ctx.drawImage(cardsimg, allcards[0]/13*(pokerDeck[1]%13), allcards[1]/4*(parseInt(pokerDeck[1]/13)),parseInt(allcards[0]/13),parseInt(allcards[1]/4), cardsPos[1][0],cardsPos[1][1], 64,89);
+	ctx.drawImage(cardsimg, allcards[0]/13*(pokerDeck[8]%13), allcards[1]/4*(parseInt(pokerDeck[8]/13)),parseInt(allcards[0]/13),parseInt(allcards[1]/4), cardsPos[8][0],cardsPos[8][1], 64,89);
+	turn = "preflop";
+	if(winstatus=="win"){
+	    $('#computer').text("Computer Wins.");
+	    bank[0]+=chips[0]+chips[1];
+	}
+	else{
+	    $('#computer').text("You Win.");
+	    bank[1]+=chips[1]+chips[0];
+	}
+	chips = [0,0];
+	
 
     }
-
+    $('#pool').text("Pool: " + (chips[0]+chips[1]).toString());
+    $('#aibank').text(bank[0]);
+    $('#yourbank').text(bank[1]);
+    $('#aichips').text(chipsThisRound[0]);
+    $('#yourchips').text(chipsThisRound[1]);
+    computerAct();
 }
 
 function raise(){
-
+    console.log("andy");
+    temp = 1+chipsThisRound[0]-chipsThisRound[1];
+    chipsThisRound[1]+= temp;
+    bank[1]-=temp;
+    computerAct();
+    $('#aibank').text(bank[0]);
+    $('#yourbank').text(bank[1]);
+    $('#aichips').text(chipsThisRound[0]);
+    $('#yourchips').text(chipsThisRound[1]);
 
 }
 
 function computerAct(){
+    var xmlHttp = new XMLHttpRequest();
+    var a;
     shuffle(thisround);
     s = thisround[1];
+    var url="http://127.0.0.1:5000/time";
+    xmlHttp.open( "GET",url , false );
+    xmlHttp.send( null );
+    a = xmlHttp.responseText;
     if(s=="r"){
-	bank[0]-=2;
-	chipsThisRound[0]+=2;
+	temp = 1+chipsThisRound[1]-chipsThisRound[0];
+	chipsThisRound[0]+=1+chipsThisRound[1]-chipsThisRound[0];
+	bank[0] -=temp;
+	$('#computer').text("Computer raises.");
     }
+    else{
+	chips[0]+=chipsThisRound[0];
+	chips[1]+=chipsThisRound[1];
+	bank[1]+= chips[1]+chips[0];
+	chipsThisRound = [0,0];
+	chips = [0,0];
+	thisround = [];
+	$('#computer').text("Computer folds. New round.");
+	xmlHttp.open( "GET",url , false );
+	xmlHttp.send( null );
+	a = xmlHttp.responseText;
+
+	initRound();
+
+    }
+    
 }
 
 function show(){
@@ -224,6 +306,7 @@ function show(){
 
 function initRound(){
     // all initiation 
+    $('#pool').text("Pool: 0" + (chips[0]+chips[1]).toString());
     turn  = "preflop";
     turnnum = 0;
     betseq = [""];
@@ -254,6 +337,7 @@ function initRound(){
     xmlHttp.open( "GET",url , false );
     xmlHttp.send( null );
     a = xmlHttp.responseText;
+    winstatus = a;
     if(a=="win"){
 	thisround = win;
     }
@@ -261,7 +345,7 @@ function initRound(){
 	thisround = lose;
     }
 
-    if(blind = 1){ // the computer gets the big blind
+    if(blind = 1){ // the computer gets the small blind
 	// query a strategy with a string
 	// '|' to seperate everything, 'e' to represent empty blabla
 	// round|computer|computer|boardstring|bs|bs|bs|bs
@@ -269,6 +353,7 @@ function initRound(){
 	// And it is computer's turn to act
 	bank[0]-=1;
 	bank[1]-=2;
+	computerAct();
     }
     else{
 	chipsThisRound=[2,1];
@@ -289,4 +374,6 @@ function initRound(){
     
     $('#aibank').text(bank[0]);
     $('#yourbank').text(bank[1]);
+    $('#aichips').text(chipsThisRound[0]);
+    $('#yourchips').text(chipsThisRound[1]);
 }

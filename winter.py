@@ -6,6 +6,7 @@ from random import *
 from swan.connection import *
 from swan.card import *
 from swan.hand_evaluator import *
+import time
 
 deck = []
 for i in range(52):
@@ -44,7 +45,16 @@ def test():
 @app.route("/strategy/<s>")
 def getStrategy(s):
     #here I use something from the swan project
+    
     return s
+@app.route("/time")
+def timedelay():
+    #here I use something from the swan project
+    s = "a period of time"
+    time.sleep(1)
+    return s
+
+
 
 
 @app.route("/evaluate/<s>")

@@ -31,21 +31,52 @@ img{
 #controls
 {
   top: 570px;
-  left: 500px;
+  left: 1100px;
   position: absolute;
   width: 100%;
 }
 
 #start{
-    bottom:35px;
-    left:100px;
+    top:570px;
+    left:500px;
     position:absolute;
-    width:100%;
+    
+    width:200%;
 }
 
 
 #yourbank{
-    font-color: white;
-    bottom:35px;
+    color: white;
+    top:550px;
+    left:700px;
+    position:absolute;
+}
+#aibank{
+    color: white;
+    top:120px;
+    left:700px;
+    position:absolute;
+
+}
+
+#yourchips{
+    color: white;
+    top:490px;
+    left:980px;
+    position:absolute;
+}
+
+#aichips{
+    color: white;
+    top:190px;
+    left:980px;
+    position:absolute;
+
+}
+
+#pool{
+    color: white;
+    top:260px;
+    left:880px;
     position:absolute;
 }
